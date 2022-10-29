@@ -28,7 +28,7 @@ function Recipes() {
       <h2>{recipe.name.toUpperCase()}</h2>
       <ul>
         {recipe.ingredients.map((ingredient) => (
-          <li key={crypto.randomUUID()}>{ingredient}</li>
+          <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
     </div>

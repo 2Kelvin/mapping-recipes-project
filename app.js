@@ -28,7 +28,7 @@ function Recipes() {
         recipe.ingredients.map(function (ingredient) {
           return React.createElement(
             "li",
-            { key: crypto.randomUUID() },
+            { key: ingredient },
             ingredient
           );
         })
