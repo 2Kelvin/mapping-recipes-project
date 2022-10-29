@@ -1,0 +1,26 @@
+.app {
+    display: grid;
+    justify-content: center;
+}
+
+._recipe {
+    border-radius: 20px;
+    border: 1px solid #555;
+    padding: 0.5em 1em;
+    margin-top: 1.5em;
+    min-width: 400px;
+}
+
+._recipe h2 {
+    background-color: gold;
+    font-size: 1.1em;
+}
+
+._recipe ul li {
+    list-style: decimal;
+    text-transform: capitalize;
+}
+
+.app h1 {
+    background-color: skyblue;
+}
