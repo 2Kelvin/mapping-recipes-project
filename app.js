@@ -12,10 +12,19 @@ var recipes = [{
   ingredients: ["chickpeas", "olive oil", "garlic cloves", "lemon", "tahini"]
 }];
 
-function Recipe(_ref) {
-  var id = _ref.id,
-      name = _ref.name,
-      ingredients = _ref.ingredients;
+function Ingredient(_ref) {
+  var ingredient = _ref.ingredient;
+
+  return React.createElement(
+    "li",
+    null,
+    ingredient
+  );
+}
+
+function Recipe(_ref2) {
+  var name = _ref2.name,
+      ingredients = _ref2.ingredients;
 
   return React.createElement(
     "div",
@@ -29,11 +38,10 @@ function Recipe(_ref) {
       "ul",
       null,
       ingredients.map(function (ingredient) {
-        return React.createElement(
-          "li",
-          { key: ingredient },
-          ingredient
-        );
+        return React.createElement(Ingredient, {
+          ingredient: ingredient,
+          key: ingredient
+        });
       })
     )
   );
@@ -41,12 +49,9 @@ function Recipe(_ref) {
 
 function Recipes() {
   var listRecipes = recipes.map(function (recipe) {
-    return React.createElement(Recipe, {
-      key: recipe.id,
-      id: recipe.id,
-      name: recipe.name,
-      ingredients: recipe.ingredients
-    });
+    return React.createElement(Recipe, Object.assign({
+      key: recipe.id
+    }, recipe));
   });
   return listRecipes;
 }
@@ -64,7 +69,7 @@ export default function App() {
   );
 }
 
-// react
+// react-connection
 var rootNode = document.getElementById("reactRootNode");
 var root = ReactDOM.createRoot(rootNode);
 root.render(React.createElement(App, null));

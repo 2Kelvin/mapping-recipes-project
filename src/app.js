@@ -22,14 +22,21 @@ const recipes = [
   }
 ];
 
-function Recipe({ id, name, ingredients }) {
+function Ingredient({ ingredient }) {
+  return <li >{ingredient}</li>;
+}
+
+function Recipe({ name, ingredients }) {
   return (
     <div className="_recipe">
       <h2>{name.toUpperCase()}</h2>
       <ul>
-        {ingredients.map((ingredient) => (
-          <li key={ingredient}>{ingredient}</li>
-        ))}
+        {ingredients.map((ingredient) =>
+          <Ingredient
+            ingredient={ingredient}
+            key={ingredient}
+          />
+        )}
       </ul>
     </div>
   );
@@ -39,9 +46,7 @@ function Recipes() {
   const listRecipes = recipes.map((recipe) =>
     <Recipe
       key={recipe.id}
-      id={recipe.id}
-      name={recipe.name}
-      ingredients={recipe.ingredients}
+      {...recipe}
     />
   );
   return listRecipes;
@@ -56,7 +61,7 @@ export default function App() {
   );
 }
 
-// react
+// react-connection
 const rootNode = document.getElementById("reactRootNode");
 const root = ReactDOM.createRoot(rootNode);
 root.render(<App />);
