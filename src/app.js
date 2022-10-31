@@ -2,7 +2,7 @@ const recipes = [
   {
     id: "greek-salad",
     name: "Greek Salad",
-    ingredients: ["tomatoes", "cucumber", "onion", "olives", "feta"],
+    ingredients: ["tomatoes", "cucumber", "onion", "olives", "feta"]
   },
   {
     id: "hawaiian-pizza",
@@ -13,26 +13,37 @@ const recipes = [
       "mozzarella",
       "ham",
       "pineapple",
-    ],
+    ]
   },
   {
     id: "hummus",
     name: "Hummus",
-    ingredients: ["chickpeas", "olive oil", "garlic cloves", "lemon", "tahini"],
-  },
+    ingredients: ["chickpeas", "olive oil", "garlic cloves", "lemon", "tahini"]
+  }
 ];
 
-function Recipes() {
-  const listRecipes = recipes.map((recipe) => (
-    <div key={recipe.id} className="_recipe">
-      <h2>{recipe.name.toUpperCase()}</h2>
+function Recipe({ id, name, ingredients }) {
+  return (
+    <div className="_recipe">
+      <h2>{name.toUpperCase()}</h2>
       <ul>
-        {recipe.ingredients.map((ingredient) => (
+        {ingredients.map((ingredient) => (
           <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
     </div>
-  ));
+  );
+}
+
+function Recipes() {
+  const listRecipes = recipes.map((recipe) =>
+    <Recipe
+      key={recipe.id}
+      id={recipe.id}
+      name={recipe.name}
+      ingredients={recipe.ingredients}
+    />
+  );
   return listRecipes;
 }
 

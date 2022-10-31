@@ -12,28 +12,41 @@ var recipes = [{
   ingredients: ["chickpeas", "olive oil", "garlic cloves", "lemon", "tahini"]
 }];
 
+function Recipe(_ref) {
+  var id = _ref.id,
+      name = _ref.name,
+      ingredients = _ref.ingredients;
+
+  return React.createElement(
+    "div",
+    { className: "_recipe" },
+    React.createElement(
+      "h2",
+      null,
+      name.toUpperCase()
+    ),
+    React.createElement(
+      "ul",
+      null,
+      ingredients.map(function (ingredient) {
+        return React.createElement(
+          "li",
+          { key: ingredient },
+          ingredient
+        );
+      })
+    )
+  );
+}
+
 function Recipes() {
   var listRecipes = recipes.map(function (recipe) {
-    return React.createElement(
-      "div",
-      { key: recipe.id, className: "_recipe" },
-      React.createElement(
-        "h2",
-        null,
-        recipe.name.toUpperCase()
-      ),
-      React.createElement(
-        "ul",
-        null,
-        recipe.ingredients.map(function (ingredient) {
-          return React.createElement(
-            "li",
-            { key: ingredient },
-            ingredient
-          );
-        })
-      )
-    );
+    return React.createElement(Recipe, {
+      key: recipe.id,
+      id: recipe.id,
+      name: recipe.name,
+      ingredients: recipe.ingredients
+    });
   });
   return listRecipes;
 }
